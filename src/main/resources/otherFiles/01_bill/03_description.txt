@@ -1,0 +1,89 @@
+﻿
+قرار است فایل های
+01_bill,02_organization
+خوانده بشه و خروجی مورد انتظار در 
+*result
+تولید بشه.
+
+
+
+فایل سازمان ها
+02_organization
+شامل اطلاعات سازمان است که خط اول آن فیلد ها را توضیح می دهد.
+بعضی از سازمان ها غیر فعال هستند.
+فیلد کلید سازمان کلید ترکیبی است از
+org_type,company_code
+توجه کنید که کد کمپانی تکراری است.
+
+
+فایل بیل
+01_bill
+شامل شناسه قبض و پرداخت و مبلغ است که از روی شناسه قبض و 
+با توجه به  تصویر
+04_extract_organization.png
+می توان به سازمان رسید.
+فایل organization_enum شامل نوع سازمان ها است.
+
+
+
+Language: Java
+Tools: up to jdk 11, maven, log4j and other
+
+موارد ارزیابی
+----------------
+completeness
+clean code
+
+زمان ۲ ساعت
+
+
+------------------------------------------------------------
+* result
+1-
+
+validate bill file
+نام فایل خروجی
+out.validate.txt
+
+note:
+در فایل بیل به سازمان مربوطه باید برسید
+برای رسیدن به سازمان از تصویر extract_organization کمک بگیر
+۱-در صورت پیدا نکردن سازمان خطای مربوطه چاپ بشه
+line "xx1": invalid organizaion "z" "yyy"
+
+۲-در صورت پیدا کردن و غیر فعال بودن سازمان خطای مربوطه چاپ شود.
+line "xx2": organization "z" "yyy" not enabled
+
+۳-فقط خطا ها در فایل ریخته شود.
+
+"xx1","xx2": line number شماره خط فایل
+"z": type
+"yyy": company code
+
+
+-----------------------------------
+2-
+نام فایل خروجی
+out.report1.txt
+
+generate report
+از هر سازمان چند بیل سالم با جمع مبلغ 
+
+هر خط این فایل شامل موارد زیر خواهد بود
+"z""yyy", count, amount
+
+note:
+در فایل بیل با توجه به سازمان های پیدا شده. سر جمع را محاسبه کن
+
+-----------------------------------
+3- it is optional to solve
+
+	3-1-create function for relation between paymentid, amount
+	3-2-validate amount with your function
+	
+note:	
+بین دو فیلد 
+amount,paymentid
+یک رابطه ای وجود دارد.
+برای این رابطه یک تابع بنویس . کل فایل را با تابع ارزابی کن و موارد مشکل دار را چاپ کن.
+

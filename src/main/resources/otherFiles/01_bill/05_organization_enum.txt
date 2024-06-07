@@ -1,0 +1,8 @@
+[
+{"name":"water","organizationType":"1"},
+{"name":"electronic","organizationType":"2"},
+{"name":"gas","organizationType":"3"},
+{"name":"telephone","organizationType":"4"},
+{"name":"mobile","organizationType":"5"},
+{"name":"other","organizationType":"9"}
+]
